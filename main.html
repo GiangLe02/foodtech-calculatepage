@@ -52,13 +52,14 @@
         
     <!--CALCULATE FORM-->
       <div class="container">
-      <form>
+      <form id="calculate-form">
           <div class="form-wrap col-lg-7 align-self-center">
             <h3 class="form-heading align-self-center">CALCULATE YOUR INGREDIENT DATE</h3>
+
             <div class="form-content">
               <label class="form-text" for="select-ingre">INGREDIENT</label>
-              <select class="form-select form-control" size="5" id="select-ingre">
-                <option selected>Select one</option>
+              <select class="form-select form-control" onchange="onIngreChanged(this)" size="5" id="selectIngre" required>
+                <option value="" selected>Select one</option>
                 <option value="1">Rice/Pasta</option>
                 <option value="2">Bread</option>
                 <option value="3">Cereals</option>
@@ -75,30 +76,41 @@
                 <option value="14">Ground meat(red meat)</option>
                 <option value="15">Poultry</option>
                 <option value="16">Lunch meat</option>
-                <option value="17">Pork</option>
-                <option value="18">Beef</option>
-                <option value="19">Lamb</option>
-                <option value="20">Eggs</option>
-                <option value="21">Fish</option>
-                <option value="22">Milk</option>
-                <option value="23">Cheese</option>
-                <option value="24">Yogurt</option>
-                <option value="25">Fruit juice</option>
+                <option value="17">Pork,Beef,Lamb</option>
+                <option value="18">Eggs</option>
+                <option value="19">Fish</option>
+                <option value="20">Milk</option>
+                <option value="21">Cheese</option>
+                <option value="22">Yogurt</option>
+                <option value="23">Beverages/Can food</option>
+                <option value='24'>Fruit juice</option>
               </select>
+              <div class="invalid-feedback">Please choose your ingredient</div>
             </div>
+
+            <div class="form-content">
+              <label for="select-sub-ingre" class="form-text">SPECIFIC INGREDIENT</label>
+              <select class="form-select form-control" id="select-sub-ingre"></select>
+            </div>
+
             <div class="form-content">
               <label class="form-text" for="select-temp">TEMPERATURE</label>
-              <select class="form-select form-control" id="select-temp">
+              <select class="form-select form-control" id="select-temp" required>
                 <option selected>Select one</option>
                 <option value="1">Fridge</option>
                 <option value="2">Room Temperature</option>
               </select>
+              <div class="invalid-feedback">Please choose your temperature</div>
             </div>
+
             <div class="form-content">
-              <label class="form-text" for="start-date">THE DATE YOU BUY</label>
-              <input class="form-control" type="date" id="start-date" value="mm/dd/yyyy">
+              <label class="form-text" for="start_date">THE DATE YOU BUY</label>
+              <input class="form-control" type="date" id="start_date" placeholder="mm/dd/yyyy" required>
             </div>
-            <button class="btn-form align-self-center" type="submit">SUBMIT</button>
+
+            <button id="form_btn" class="btn-form btn align-self-center active" onclick="formSubmit()" type="button">SUBMIT</button>
+            <p class="results-form" id="expired_date"></p>
+            <!--<p id="demo"></p>-->
           </div>
       </form>
     </div>
@@ -274,7 +286,7 @@
     crossorigin="anonymous"></script>
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="function.js"></script>
+    <script src="main.js"></script>
         <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -287,3 +299,4 @@
     -->  
       </body>
 </html>
+
